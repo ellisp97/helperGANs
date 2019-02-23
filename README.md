@@ -14,7 +14,7 @@ Generator models p(y),p(x|y) then derives the posterior to learn the distributio
 
 <p align="center">
   <img src="./GAN.png" alt="GAN architecture"
-       width="654" height="450">
+       width="654" height="250">
 </p>
 
 When a prediction is made we compute an error value, this allows us to optimize by minimizing the loss function (e.g. using the Gradient Descent Strategy)
@@ -25,7 +25,7 @@ When there exists a Supervised Learning Problem one can use Backpropogation.
 
 <p align="center">
   <img src="./back_prop.png" alt="Backpropogation and DCGAN"
-       width="654" height="450">
+       width="654" height="250">
 </p>
  
 Backpropogation here computes 2 different optimisation problems for the 2 newtorks. Where (as it's adversarial) there are competing against each other to maximise and minimise the error).
