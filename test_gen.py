@@ -47,11 +47,13 @@ def binary_crossentropy(y_true, y_pred):
 
 
 def custom_objective(coefficient):
-    # assign more wight to true beliefs than real data
-    y_pred = y_pred * (1 + coefficient)
-    y_true = y_true * (1 - coefficient)
+    
+    def loss(y_true, y_pred):
+        # assign more wight to true beliefs than real data
+        y_pred = y_pred * (1 + coefficient)
+        y_true = y_true * (1 - coefficient)
 
-    loss = K.mean(K.binary_crossentropy(y_true, y_pred), axis=-1)
+        return K.mean(K.binary_crossentropy(y_true, y_pred), axis=-1)
 
     return loss
 
