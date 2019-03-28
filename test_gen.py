@@ -41,19 +41,18 @@ K.set_image_dim_ordering('th')
 # Deterministic output.
 # np.random.seed(1000)
 
-def custom_objective(coefficient):
-    
-    def loss(y_true, y_pred):
-        result = []
-        # assign more wight to true beliefs than real data
-        y_pred = y_pred * (1 + coefficient)
-        y_true = y_true * (1 - coefficient)
+def binary_crossentropy(y_true, y_pred):
+    return 
 
-        for i in range(len(y_pred)):
-            y_pred[i] = [max(min(x, 1 - K.epsilon()), K.epsilon()) for x in y_pred[i]]
-            result.append([y_true[i][j] * math.log(y_pred[i][j]) + (1 - y_true[i][j]) * math.log(1 - y_pred[i][j]) for j in range(len(y_pred[i]))])
-        return np.mean(result)
-    
+
+
+def custom_objective(coefficient):
+    # assign more wight to true beliefs than real data
+    y_pred = y_pred * (1 + coefficient)
+    y_true = y_true * (1 - coefficient)
+
+    loss = K.mean(K.binary_crossentropy(y_true, y_pred), axis=-1)
+
     return loss
 
 class DCGAN(object):
