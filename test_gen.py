@@ -70,7 +70,7 @@ class DCGAN(object):
 
 
 
-        self.NAME = "LOGS/MNIST-G:{}-D:{}-R:{}".format(self.GLR,self.DLR,self.runNo)#,int(time.time()))
+        self.NAME = "LOGS_{}/MNIST-G:{}-D:{}-R:{}".format(self.bias,self.GLR,self.DLR,self.runNo)#,int(time.time()))
 
         (X_train, Y_train), (_, _) = mnist.load_data()
 
@@ -222,7 +222,7 @@ def plot_images(generator,epoch,noiseClass,noiseInput,isTest,GLR,DLR,runNo,bias)
     if isTest:
         NAME = "TEST/TEST-MNIST-G:{}-D:{}-R:{}".format(GLR,DLR,runNo)#,int(time.time()))
     elif bias > 0: 
-        NAME = "LOGS_OPT/MNIST-G:{}-D:{}-R:{}".format(GLR,DLR,runNo)#,int(time.time()))
+        NAME = "LOGS_OPT_{}/MNIST-G:{}-D:{}-R:{}".format(bias,GLR,DLR,runNo)#,int(time.time()))
     else:
         NAME = "LOGS/MNIST-G:{}-D:{}-R:{}".format(GLR,DLR,runNo)#,int(time.time()))
 
